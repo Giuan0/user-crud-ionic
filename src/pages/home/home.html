@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Usuários</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="outer-content">
+  <ion-list>
+    
+
+    <ion-item-sliding *ngFor="let user of users">
+      <ion-item>
+          <ion-icon name="person" item-left>
+            </ion-icon>
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button (click)="showConfirm(user._id)" ion-button color="danger" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Deletar
+        </button>
+        <button (click)="putUser(user)" ion-button color="secondary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>  
+
+  </ion-list>
+
+  
+  
 </ion-content>
+  <ion-footer>
+    <button ion-button full (click)="registerUser()">Adicionar Usuário</button>  
+
+  </ion-footer>
